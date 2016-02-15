@@ -5,6 +5,9 @@ class UrlsController < ApplicationController
     @urls = Url.all
   end
 
+  def show
+  end
+
   def new
     @url = Url.new
   end
@@ -21,6 +24,9 @@ class UrlsController < ApplicationController
             format.json { render json: @url.errors, status: :unprocessable_entity }
           end
         end
+  end
+
+  def destroy
   end
 
   private
