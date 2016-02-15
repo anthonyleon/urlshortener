@@ -6,6 +6,7 @@ class UrlsController < ApplicationController
   end
 
   def show
+    @url = Url.find()
   end
 
   def new
@@ -14,19 +15,33 @@ class UrlsController < ApplicationController
 
   def create
     @url = Url.new(url_params)
-
-        respond_to do |format|
-          if @url.save
-            format.html { redirect_to @url, notice: 'Url was successfully created.' }
-            format.json { render :show, status: :created, location: @url }
-          else
-            format.html { render :new }
-            format.json { render json: @url.errors, status: :unprocessable_entity }
-          end
+      respond_to do |format|
+        if @url.save
+          format.html { redirect_to urls_path , notice: 'Url was successfully created.' }
+        else
+          format.html { render :new }
         end
+      end
+  end
+
+  def edit
+  end
+
+  def update
+    respond_to do |format|
+      if @url.update(url_params)
+        format.html { redirect_to urls_path, notice: 'Url was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
   end
 
   def destroy
+    @url.destroy
+    respond_to do |format|
+      format.html { redirect_to urls_path, notice: 'Url was successfully destroyed.' }
+    end
   end
 
   private
@@ -36,8 +51,8 @@ class UrlsController < ApplicationController
       end
 
       # Never trust parameters from the scary internet, only allow the white list through.
-      def url
-        params.require(:url).permit(:original_url)
+      def url_params
+        params.require(:url).permit(:original_url, :id)
       end
 
 end
