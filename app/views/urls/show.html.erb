@@ -1,1 +1,2 @@
-<%= link_to 'url Record', url_path(@url) %>
+<%= redirect_to @url.original_url, status: 301 %>
+<%= end %>
