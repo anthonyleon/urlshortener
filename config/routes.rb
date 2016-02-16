@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root 'urls#new'
 
-  get '/urls/:id' => 'urls#show'
+  # get '/urls/:id' => 'urls#show'
 
   post '/urls' => 'urls#index'
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,9 +1,7 @@
 class CreateUrls < ActiveRecord::Migration
   def change
     create_table :urls do |t|
-      t.text :original_url
-
-    add_index :original_urls
+      t.string :original_url
     end
   end
 end

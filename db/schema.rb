@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20160215203313) do
 
   create_table "urls", force: :cascade do |t|
-    t.text "original_url"
+    t.string "original_url"
   end
 
 end
